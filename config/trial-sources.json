@@ -1,0 +1,223 @@
+{
+  "schema_version": 1,
+  "kind": "public_source_seed",
+  "language": "zh-CN",
+  "requires_refetch_before_live": true,
+  "note": "这是人工核对的选题与来源种子，不是模型生成结果。text 仅保存短原文摘录；supports 为编辑者对已读原文的概括，不能冒充原文引句。正式生成前应重新抓取正文，保存在实例私有目录，核对正文足以支持题目。未知日期不推测；旧研究和情景预测均不得写成实时结论。",
+  "output_guidance": {
+    "target_chinese_characters": [300, 500],
+    "structure": ["具体问题", "一句话结论", "三步可核查解释", "关键证据及日期", "反例或边界", "下一步观察指标"],
+    "evidence_rule": "明确标记事实、推断和未知；给出公开可核查的简短解释，不请求内部思维过程。每个关键事实绑定来源。抓取失败则保留待查，不凭标题补写答案。",
+    "scope": "知识阅读与证据解读，不提供个体诊疗方案、证券买卖建议或收益预测。"
+  },
+  "sources": [
+    {
+      "id": "fda_surrogate_endpoints",
+      "title": "Surrogate Endpoint Resources for Drug and Biologic Development",
+      "publisher": "U.S. Food and Drug Administration",
+      "url": "https://www.fda.gov/drugs/development-resources/surrogate-endpoint-resources-drug-and-biologic-development",
+      "date": null,
+      "published_at": "unknown",
+      "retrieved_at": "2026-10-15T00:12:29+08:00",
+      "accessed_at": "2026-10-15T00:12:29+08:00",
+      "content_type": "text/html",
+      "source_type": "regulator_explanation",
+      "text": "A surrogate endpoint does not measure the clinical benefit of primary interest in and of itself",
+      "excerpt_location": "How can biomarkers be used as surrogate endpoints?",
+      "supports": [
+        "临床结局直接衡量患者感受、功能或生存；替代终点用于预测这些结局。",
+        "替代终点被接受需要流行病学、临床试验等证据，并有具体使用情境；候选、合理可能及已验证的替代终点证据强度不同。",
+        "合适的替代终点可能缩短研发时间，但替代指标本身的改善不能无条件等同于临床获益。"
+      ],
+      "fetch_note": "已通过浏览工具读取官方正文。未确认发表或更新日期，保持 unknown。正式生成时重新读取所列小节。"
+    },
+    {
+      "id": "sec_financial_statements",
+      "title": "Beginners' Guide to Financial Statements",
+      "publisher": "U.S. Securities and Exchange Commission",
+      "url": "https://www.sec.gov/about/reports-publications/beginners-guide-financial-statements",
+      "date": "2014-01-12",
+      "published_at": "2014-01-12",
+      "retrieved_at": "2026-10-15T00:12:29+08:00",
+      "accessed_at": "2026-10-15T00:12:29+08:00",
+      "content_type": "text/html",
+      "source_type": "regulator_education",
+      "text": "To do this, it adjusts net income for any non-cash items",
+      "excerpt_location": "Cash Flow Statements / Operating Activities",
+      "supports": [
+        "经营现金流从净利润出发，调整非现金项目及经营性资产负债的变动；利润与现金流衡量对象不同。",
+        "购买长期设备通常表现为投资活动现金流出，融资现金流可来自借款或发行股份。",
+        "现金余额是时点数，利润和现金流是期间数，解释差异时须对齐期间与报表口径。"
+      ],
+      "fetch_note": "已读取官方现金流量表章节。网页标题下日期为 2014-01-12；仅用作会计机制入门材料，不把它当某家公司的实际报表。"
+    },
+    {
+      "id": "fda_process_controls",
+      "title": "Questions and Answers on Current Good Manufacturing Practice Regulations | Production and Process Controls",
+      "publisher": "U.S. Food and Drug Administration",
+      "url": "https://www.fda.gov/drugs/guidances-drugs/questions-and-answers-current-good-manufacturing-practice-regulations-production-and-process",
+      "date": null,
+      "published_at": "unknown",
+      "retrieved_at": "2026-10-15T00:12:29+08:00",
+      "accessed_at": "2026-10-15T00:12:29+08:00",
+      "content_type": "text/html",
+      "source_type": "regulator_original_qa",
+      "text": "The manufacturer is expected to have a sound rationale for its choices in this regard.",
+      "excerpt_location": "Question 5; Question 4 provides the manufacturing-yield context",
+      "supports": [
+        "问题 5 强调工艺开发、生命周期和规模化可重复性，不能用完成三个成功批次概括全部验证。",
+        "问题 4 以经皮贴剂说明：部分工艺废料来自启停、换卷等正常步骤；受控工艺的批间废料水平应相对稳定，异常变化需要调查。",
+        "上述材料说明质量和规模化证据要求；它没有给出任何企业的成本、良率目标或审批成功概率。"
+      ],
+      "fetch_note": "已读取官方问题 4、5 的正文。网页含多个不同时间的小节，未将其他小节的日期套用到这两题；这是美国药品生产语境。"
+    },
+    {
+      "id": "nhlbi_sprint_study",
+      "title": "Systolic Blood Pressure Intervention Trial (SPRINT)",
+      "publisher": "NHLBI BioLINCC",
+      "url": "https://biolincc.nhlbi.nih.gov/studies/sprint/",
+      "date": null,
+      "published_at": "unknown",
+      "retrieved_at": "2026-10-15T00:12:29+08:00",
+      "accessed_at": "2026-10-15T00:12:29+08:00",
+      "content_type": "text/html",
+      "source_type": "trial_sponsor_repository",
+      "text": "Eligible participants were adults 50 years of age or more",
+      "excerpt_location": "Participants; Design; Conclusions",
+      "supports": [
+        "该试验将 9361 名符合条件的参加者随机分配到强化或标准血压目标；研究对象为心血管风险增加、无糖尿病及既往卒中史的人群。",
+        "研究采用复合心血管终点，结局判定人员对分组设盲；获益与部分不良事件增加应同时呈现。",
+        "页面总结主要对应 2015 年原始报告，试验时期为 2010–2016；数据集最后更新时间不等于论文发表时间或医疗指南更新时间。"
+      ],
+      "related_original_article": "https://doi.org/10.1056/NEJMoa1511939",
+      "fetch_note": "已读取 NHLBI 原始研究资料库正文。PMC 与期刊直达页在本次访问中不稳定，因此不将它们列为必需源；此题仅使用资料库实际写明的研究设计和边界。"
+    },
+    {
+      "id": "sec_non_gaap",
+      "title": "Non-GAAP Financial Measures",
+      "publisher": "U.S. Securities and Exchange Commission",
+      "url": "https://www.sec.gov/rules-regulations/staff-guidance/corporation-finance-interpretations/non-gaap-financial-measures",
+      "date": "2022-12-13",
+      "published_at": "2022-12-13",
+      "date_kind": "page_last_update",
+      "retrieved_at": "2026-10-15T00:12:29+08:00",
+      "accessed_at": "2026-10-15T00:12:29+08:00",
+      "content_type": "text/html",
+      "source_type": "regulator_staff_interpretation",
+      "text": "this measure does not have a uniform definition",
+      "excerpt_location": "Question 102.07, dated May 17, 2016",
+      "supports": [
+        "自由现金流常按经营现金流减资本支出计算，但没有统一定义，应检查具体计算与调节过程。",
+        "该指标可能未扣除强制偿债等非自主支出，因此不能直接当作可自由分配的余额。",
+        "页面也提示不同企业的非 GAAP 指标可能不可直接比较；此题聚焦现金用途，不作证券价值判断。"
+      ],
+      "fetch_note": "已读取官方问题 102.07；该问题标注日期为 2016-05-17，整页最后更新时间为 2022-12-13，两者分开记录。"
+    },
+    {
+      "id": "iea_battery_outlook_2024",
+      "title": "Batteries and Secure Energy Transitions — Outlook for battery demand and supply",
+      "publisher": "International Energy Agency",
+      "url": "https://www.iea.org/reports/batteries-and-secure-energy-transitions/outlook-for-battery-demand-and-supply",
+      "date": "2024-04-25",
+      "published_at": "2024-04-25",
+      "retrieved_at": "2026-10-15T00:12:29+08:00",
+      "accessed_at": "2026-10-15T00:12:29+08:00",
+      "content_type": "text/html",
+      "source_type": "agency_original_analysis",
+      "text": "Announcements for new battery manufacturing capacity, if realised, would increase the global total nearly fourfold by 2030",
+      "excerpt_location": "Summary",
+      "supports": [
+        "2024 年报告将新增电池制造产能公告与实际建成明确区分，其 2030 年产能说法带有项目兑现条件。",
+        "报告比较情景需求与供给，其中 NZE 表示 2050 年净零排放情景，而非已发生事实。",
+        "可据此提出项目兑现率、投产进度和实际需求的核对框架，但不能由产能公告直接推出未来销量、利用率或利润。"
+      ],
+      "fetch_note": "已读取官方章节及报告主页，主页标注发布于 2024-04-25；本题明确作为历史情景解读，不声称反映 2026 年市场现状。"
+    },
+    {
+      "id": "iea_battery_status_2024",
+      "title": "Batteries and Secure Energy Transitions — Status of battery demand and supply",
+      "publisher": "International Energy Agency",
+      "url": "https://www.iea.org/reports/batteries-and-secure-energy-transitions/status-of-battery-demand-and-supply",
+      "date": "2024-04-25",
+      "published_at": "2024-04-25",
+      "retrieved_at": "2026-10-15T00:12:29+08:00",
+      "accessed_at": "2026-10-15T00:12:29+08:00",
+      "content_type": "text/html",
+      "source_type": "agency_original_analysis",
+      "text": "Battery minerals prices have been volatile in recent years",
+      "excerpt_location": "Summary",
+      "supports": [
+        "报告描述电池矿产价格在 2021–2022 年显著上涨，随后在 2023 年至 2024 年初回落。",
+        "报告将长期电池成本下降与化学体系、制造进步等因素联系起来；原料价格、生产成本和产品售价应分别讨论。",
+        "这些行业事实不能直接证明某家企业的毛利或现金流会改善，企业结论还需要销售合同、库存和报表资料。"
+      ],
+      "fetch_note": "已读取官方摘要。时间范围是该 2024 年报告回顾的时期，不将旧矿价变化标成最新行情。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "trial_01_surrogate",
+      "topic": "生物",
+      "question": "看到一项研究说某个生物标志物改善，为什么还不能直接说患者活得更久？",
+      "source_ids": ["fda_surrogate_endpoints"],
+      "reading_focus": "拆开测到什么、预测什么、验证到什么；用候选与已验证替代终点区分证据等级。",
+      "guardrails": ["不要把所有替代终点都否定，也不要把任意标志物称为已验证终点。", "不提出个人用药建议。"]
+    },
+    {
+      "id": "trial_02_profit_cash",
+      "topic": "金融",
+      "question": "企业净利润上升但经营现金流下降，怎样用三步排查找出原因？",
+      "source_ids": ["sec_financial_statements"],
+      "reading_focus": "从净利润到非现金调整，再到经营性资产负债变动；给出应收、存货、应付的核对方向。",
+      "guardrails": ["没有公司报表时，只能给机制假设，不能下造假或经营恶化结论。", "若演示数字，明确是教学假设且确保勾稽一致。"]
+    },
+    {
+      "id": "trial_03_scale_validation",
+      "topic": "产业",
+      "question": "一种药品工艺连续做出三个合格批次，为什么仍不能单凭这个证明稳定量产？",
+      "source_ids": ["fda_process_controls"],
+      "reading_focus": "区分偶然成功、可重复过程和持续受控；说明该补什么批间波动、工艺理解与异常调查证据。",
+      "guardrails": ["以 FDA 问题 5 的具体语境解释，不扩张为所有产品或所有司法辖区的统一法规。", "不能从资料推出某企业已满足或不满足监管条件。"]
+    },
+    {
+      "id": "trial_04_trial_boundary",
+      "topic": "生物",
+      "question": "SPRINT 试验得到阳性结果后，为什么读者仍要先看入组人群和不良事件？",
+      "source_ids": ["nhlbi_sprint_study"],
+      "reading_focus": "按研究对象、干预比较、获益与代价三步阅读，区分试验内部证据和对其他人群的外推。",
+      "guardrails": ["标清这是历史试验的证据阅读，不是当前血压治疗建议。", "只引用本页可核对的数据；没有绝对事件率时不自行估算治疗获益人数。"]
+    },
+    {
+      "id": "trial_05_free_cash_flow",
+      "topic": "金融",
+      "question": "财报中的自由现金流为正，为什么不等于企业拥有同额可随意分红的钱？",
+      "source_ids": ["sec_non_gaap", "sec_financial_statements"],
+      "reading_focus": "先核对定义与调节，再核对强制现金用途，最后区分当期流量与账上存量。",
+      "guardrails": ["不将一个自由现金流公式视为所有公司统一标准。", "不由单项指标推断股票值得买入或公司没有偿债风险。"]
+    },
+    {
+      "id": "trial_06_capacity_scenarios",
+      "topic": "产业",
+      "question": "读到电池产能到 2030 年将大增，怎样区分项目公告、实际产能和情景需求？",
+      "source_ids": ["iea_battery_outlook_2024"],
+      "reading_focus": "用 IEA 2024 年报告的附条件表述，展示公告兑现、投产爬坡、需求情景三个检查步骤。",
+      "guardrails": ["显著注明报告日期及预测目标年，不能写成已经实现的结果。", "不把全球制造产能直接等同于有效销量，不编造利用率。"]
+    },
+    {
+      "id": "trial_07_biotech_cash_gap",
+      "topic": "交叉",
+      "question": "生物技术工艺验证进展顺利，为什么企业的融资需求仍可能增加？",
+      "source_ids": ["fda_process_controls", "sec_financial_statements"],
+      "reading_focus": "把技术可重复性、建厂设备支出、经营收付款时间分开；解释里程碑进展与现金需求可以同时上升。",
+      "guardrails": ["跨来源连接必须标成分析推断，不声称 FDA 给出了融资结论。", "仅给一般机制，不编造企业烧钱速度、审批概率或融资金额。"]
+    },
+    {
+      "id": "trial_08_material_prices",
+      "topic": "交叉",
+      "question": "电池原料价格下降，为什么不能直接推出电池企业利润与现金流都会改善？",
+      "source_ids": ["iea_battery_status_2024", "sec_financial_statements"],
+      "reading_focus": "把历史原料变动、采购与销售价格传导、库存和收付款时点分开；列出验证企业结论所缺的资料。",
+      "guardrails": ["原料变化仅指报告回顾的历史时期，不能写成最新价格。", "合同传导和库存影响属于待验证机制，不能冒充已测量的公司事实。"]
+    }
+  ]
+}
