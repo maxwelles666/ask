@@ -1,0 +1,31 @@
+# Instance configuration and authentication
+.local/
+.env
+.env.*
+!.env.example
+auth.json
+*credentials*.json
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Private generated content and runtime state
+data/
+state/
+logs/
+*.sqlite
+*.sqlite-*
+*.db
+*.log
+
+# Local development
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+node_modules/
+dist/
+.DS_Store
+Thumbs.db

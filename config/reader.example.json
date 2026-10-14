@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "generation_enabled": false,
+  "language": "zh-CN",
+  "topics": ["biology", "finance", "industry", "cross-disciplinary"],
+  "daily_targets": {"short_cards": 10, "features": 1},
+  "reading_inventory": {"pause_at_days": 3, "resume_below_days": 2},
+  "generation": {"max_concurrent_jobs": 1, "max_attempts_per_job": 2},
+  "usage_control": {
+    "provider": null,
+    "provider_limit_verified": false,
+    "stop_when_unverifiable": true,
+    "automatic_billing_fallback": false
+  },
+  "storage": {"data_directory": "data", "private_config_directory": ".local"}
+}
