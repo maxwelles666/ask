@@ -217,7 +217,9 @@ def check_usage_delta(baseline: dict, latest: dict, max_delta: float) -> None:
     after = {item["id"]: item for item in latest["windows"]}
     require(before.keys() == after.keys(), "usage_windows_changed")
     for wid, value in after.items():
-        require(value["resets_at"] == before[wid]["resets_at"]
+        # Provider countdown conversion can jitter by a few seconds between reads.
+        # Compare to the fixed baseline, so tolerated drift cannot accumulate.
+        require(abs(value["resets_at"] - before[wid]["resets_at"]) <= 5
                 and value["used_percent"] >= before[wid]["used_percent"], "usage_window_reset_or_decreased")
         require(value["used_percent"] - before[wid]["used_percent"] < max_delta,
                 "observed_usage_budget_reached")
@@ -470,9 +472,17 @@ def run(args: argparse.Namespace) -> dict:
                         require(status not in STOP_STATUSES, status if status in STOP_STATUSES else "provider_stopped")
                         require(status == "ok", "model_transient_error" if status == "transient_error" else "invalid_model_status")
                         card = validate_card(response.get("card"), question, sources)
+                        model = response.get("model")
+                        model = model if isinstance(model, str) and re.fullmatch(r"[A-Za-z0-9_.:/-]{1,160}", model) else "unknown"
+                        raw_usage = response.get("usage")
+                        usage = {key: value for key, value in raw_usage.items()
+                                 if key in {"input_tokens", "cached_input_tokens", "output_tokens", "reasoning_output_tokens"}
+                                 and isinstance(value, int) and not isinstance(value, bool) and value >= 0
+                                 } if isinstance(raw_usage, dict) else {}
                         artifact = {"schema_version": VERSION, "generated_at": utc_now(), "question": question,
                                     "card": card, "sources": [sources[sid] for sid in question["source_ids"]],
-                                    "verification": "structure_and_exact_quotes_only", "limit_receipt": safe_receipt}
+                                    "verification": "structure_and_exact_quotes_only", "limit_receipt": safe_receipt,
+                                    "model": model, "usage": usage}
                         atomic_json(output / "cards" / (qid + ".json"), artifact)
                         atomic_text(output / "cards" / (qid + ".md"), render_card(card, question, sources))
                         state["completed"].append(qid)

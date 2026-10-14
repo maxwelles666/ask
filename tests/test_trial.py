@@ -58,7 +58,8 @@ else:
     with (base/'model_calls').open('a') as f: f.write('call\n')
     if (base/'sleep').exists(): time.sleep(30)
     output=dict(status='ok',app_id=request['app_id'],billing_channel='chatgpt_subscription',
-      card=json.loads((base/'card.json').read_text(encoding='utf-8')))
+      card=json.loads((base/'card.json').read_text(encoding='utf-8')),
+      model='fixture-model', usage={'input_tokens':100,'output_tokens':50,'authorization':'must-not-persist'})
     output['card']['question_id']=request['question']['id']
     if (base/'quota').exists(): output['status']='quota_exhausted'
     if (base/'bad_quote').exists(): output['card']['evidence'][0]['quote']='An invented quote'
@@ -131,6 +132,9 @@ class TrialBehaviorTests(unittest.TestCase):
         state = trial.run(self.args())
         self.assertEqual(state["completed"], ["q1"])
         self.assertTrue((self.base / "output/cards/q1.md").exists())
+        saved = json.loads((self.base / "output/cards/q1.json").read_text(encoding="utf-8"))
+        self.assertEqual(saved["model"], "fixture-model")
+        self.assertEqual(saved["usage"], {"input_tokens": 100, "output_tokens": 50})
         with self.assertRaisesRegex(trial.TrialError, "run_already_finished"):
             trial.run(self.args())
         self.assertEqual(self.calls(), 1)
@@ -228,6 +232,19 @@ class TrialBehaviorTests(unittest.TestCase):
         receipt["valid_until"] = "2000-01-01T00:00:00+00:00"
         with self.assertRaisesRegex(trial.TrialError, "stale_limit_receipt"):
             trial.validate_receipt(receipt, "test-app", 0.2, time.time())
+
+    def test_real_provider_one_second_reset_jitter_is_tolerated(self):
+        before = {"windows": [{"id": "codex:primary", "used_percent": 5, "resets_at": 1792551471}]}
+        after = {"windows": [{"id": "codex:primary", "used_percent": 5, "resets_at": 1792551470}]}
+        trial.check_usage_delta(before, after, 3)
+        after["windows"][0]["resets_at"] = 1792551476
+        trial.check_usage_delta(before, after, 3)
+        after["windows"][0]["resets_at"] = 1792551477
+        with self.assertRaisesRegex(trial.TrialError, "usage_window_reset_or_decreased"):
+            trial.check_usage_delta(before, after, 3)
+        after["windows"][0].update(resets_at=1792551470, used_percent=4)
+        with self.assertRaisesRegex(trial.TrialError, "usage_window_reset_or_decreased"):
+            trial.check_usage_delta(before, after, 3)
 
 
 if __name__ == "__main__":
