@@ -4,7 +4,7 @@
 
 阅读 README、docs/requirements.md、docs/implementation-plan.md 和当前 Issue。以用户最新指令为准，区分已实现、已验证与计划中的能力。
 
-本仓库处于初始化阶段，没有可运行的服务。首个实施跟踪为 https://github.com/maxwelles666/ask/issues/1 。
+本仓库已有有限试运行脚本，长期服务尚未实现。首个实施跟踪为 https://github.com/maxwelles666/ask/issues/1 。
 
 ## 公开内容边界
 
